@@ -3,14 +3,5 @@ project(tests LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(converter )
-add_executable(comparer )
-
-if(MSVC)
-  target_compile_options(converter PRIVATE /W4 /WX)
-  target_compile_options(comparer PRIVATE /W4 /WX)
-else()
-  target_compile_options(converter PRIVATE -Wall -Wextra -pedantic -Werror)
-  target_compile_options(comparer PRIVATE -Wall -Wextra -pedantic -Werror)
-endif()
-
+add_executable(converter /src/Converter/main.c /src/Converter/includes.h /src/Converter/SelfWrittenConverter/my_converter.c /src/Converter/SelfWrittenConverter/my_converter.h /src/Converter/ThirdPartyWrittenConverter/qdbmp.c /src/Converter/ThirdPartyWrittenConverter/qdbmp.h)
+add_executable(comparer /src/Comparer/comparer.c /src/Comparer/comparer.h)
